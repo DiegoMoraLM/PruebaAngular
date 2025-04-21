@@ -1,0 +1,15 @@
+.dashboard-container {
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.content {
+  padding: 1.5rem;
+}

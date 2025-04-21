@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+$poppins-light: 300;
+$poppins-regular: 400;
+$poppins-medium: 500;
+$poppins-semibold: 600;
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+h1 {
+  font-weight: $poppins-semibold;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
