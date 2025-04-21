@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { ColorListComponent } from '../color-list/color-list.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,7 @@ import { AuthService } from '../../auth/auth.service';
     MatIconModule,
     MatButtonModule,
     MatListModule,
+    ColorListComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
@@ -35,5 +37,16 @@ export class DashboardComponent {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  ngOnInit(): void {
+    const data = this.authService.getUserDataFromToken();
+    if (data) {
+      const nombreUsuario =
+        data['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+      const rol =
+        data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      console.log('Usuario:', nombreUsuario, '| Rol:', rol);
+    }
   }
 }

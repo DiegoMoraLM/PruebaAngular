@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { decodeToken, JwtPayload } from './jwt.utils';
 
 @Injectable({
   providedIn: 'root',
@@ -50,15 +51,13 @@ export class AuthService {
     });
 
     return this.http
-      .post<{ accesToken: string }>(
-        `${environment.apiUrl}/UserToken/Login`,
-        body,
-        { headers }
-      )
+      .post<any>(`${environment.apiUrl}/UserToken/Login`, body, { headers })
       .pipe(
         tap((res) => {
           if (this.isBrowser) {
-            localStorage.setItem(this.tokenKey, res.accesToken);
+            localStorage.setItem('access_token', res.accesToken);
+            localStorage.setItem('user_id', res.userId.toString());
+            localStorage.setItem('refresh_token', res.refreshToken); // opcional
           }
           this.autenticado.next(true);
         })
@@ -74,5 +73,12 @@ export class AuthService {
 
   authStatus$(): Observable<boolean> {
     return this.autenticado.asObservable();
+  }
+
+  getUserDataFromToken(): JwtPayload | null {
+    const token = this.getToken();
+    if (!token) return null;
+
+    return decodeToken(token);
   }
 }

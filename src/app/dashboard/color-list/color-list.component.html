@@ -1,0 +1,23 @@
+<div class="color-list">
+  <h2>Colores disponibles</h2>
+  <button class="reset-button" (click)="resetColores()">
+    Quitar todos los colores
+  </button>
+
+  <ul>
+    <li *ngFor="let c of colores">
+      <span [class.asignado]="c.ptlUser">
+        {{ c.color }}
+        <small *ngIf="c.ptlUser">– Asignado a: {{ c.ptlUser.username }}</small>
+      </span>
+
+      <button
+        *ngIf="!c.ptlUser"
+        (click)="asignarColor(c.color)"
+        class="asignar-button"
+      >
+        Asignar
+      </button>
+    </li>
+  </ul>
+</div>

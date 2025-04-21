@@ -1,0 +1,47 @@
+.color-list {
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .asignado {
+    font-weight: 600;
+    color: green;
+  }
+
+  .asignar-button,
+  .reset-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: #155dc1;
+    }
+  }
+
+  .reset-button {
+    margin-bottom: 1rem;
+  }
+}
