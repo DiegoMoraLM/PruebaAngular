@@ -17,29 +17,31 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.6rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #9b9fae;
   }
 
   .asignado {
     font-weight: 600;
-    color: green;
+    color: #6a6f83;
   }
 
   .asignar-button,
   .reset-button {
-    background-color: #1a73e8;
+    padding: 0.8rem;
+    background-color: #414450;
     color: white;
     border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
 
     &:hover {
-      background-color: #155dc1;
+      background-color: #828699;
     }
   }
+
 
   .reset-button {
     margin-bottom: 1rem;
