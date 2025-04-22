@@ -1,3 +1,5 @@
+
+
 .dashboard-container {
   height: 100vh;
   font-family: "Poppins", sans-serif;
@@ -7,9 +9,78 @@ mat-toolbar {
   display: flex;
   align-items: center;
   justify-content: start;
+
+}
+
+.toolbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 }
 
+.logo{
+  height: 45px;
+  align-items: center;
+  width: auto;
+  
+}
+
 .content {
-  padding: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+
+.custom-content {
+  background-color: #f4f6f8; // 🎨 Fondo general
+  min-height: 100vh;
+  padding: 1rem;
+
+  // span{
+  //   margin-left: auto;
+  // }
+  
+}
+
+
+.custom-sidenav {
+  background-color: #ffffff;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  border-right: 1px solid #e0e0e0;
+
+  .sidenav-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-list, .logout-button {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  button[mat-list-item] {
+    color: #333;
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f1f3f4;
+    }
+  }
 }

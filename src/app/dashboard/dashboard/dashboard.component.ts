@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -25,10 +25,17 @@ import { ColorListComponent } from '../color-list/color-list.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  nombreUsuario: string | null = null;
+  rol: string | null = null;
   menuAbierto = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ) {}
+
+
 
   toggleMenu(): void {
     this.menuAbierto = !this.menuAbierto;
@@ -42,11 +49,15 @@ export class DashboardComponent {
   ngOnInit(): void {
     const data = this.authService.getUserDataFromToken();
     if (data) {
-      const nombreUsuario =
-        data['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
-      const rol =
-        data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-      console.log('Usuario:', nombreUsuario, '| Rol:', rol);
-    }
+      this.nombreUsuario =
+        data['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] ?? null;
+      this.rol =
+        data['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] ?? null;
+      console.log('Usuario:', this.nombreUsuario, '| Rol:', this.rol);
+    }else {
+      console.log('No se encontraron datos de usuario en el token.');
+      this.router.navigate(['/login']);
+    } // Redirigir a la página de inicio
   }
+
 }

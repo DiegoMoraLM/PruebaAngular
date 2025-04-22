@@ -32,8 +32,8 @@ input {
 }
 
 button {
-  padding: 0.6rem;
-  background-color: #1a73e8;
+  padding: 0.8rem;
+  background-color: #414450;
   color: white;
   border: none;
   border-radius: 8px;
@@ -43,7 +43,7 @@ button {
   transition: background 0.3s;
 
   &:hover {
-    background-color: #155dc1;
+    background-color: #828699;
   }
 }
 
